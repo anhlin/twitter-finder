@@ -17,14 +17,6 @@ var T = new Twit({
 
 app.use(cors());
 app.use(bodyParser.json());
-/*app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://.herokuapp.com");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});*/
 
 app.get("/", (req, res) => {
   T.get("users/search", { Name: " ", q: req.query.q }, (err, data) => {
