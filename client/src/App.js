@@ -23,7 +23,7 @@ class App extends Component {
   searchUsers = text => {
     //this.setState({ loading: true });
     axios
-      .get("/", {
+      .get("/api", {
         params: { q: text }
       })
       .then(res => {
@@ -36,7 +36,7 @@ class App extends Component {
 
   getUser = screen_name => {
     axios
-      .get("/user", {
+      .get("/api/user", {
         params: { screen_name: screen_name }
       })
       .then(res => {
