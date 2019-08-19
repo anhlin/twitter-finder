@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import UserInst from './UserInst';
 import Spinner from '../layout/Spinner';
+import TwitterContext from '../../context/twitter/twitterContext';
 
 //No need to be a class, since no state
-const Users = ({ users, loading }) => {
+const Users = () => {
+    const twitterContext = useContext(TwitterContext);
+
+    const { loading, users } = twitterContext;
+
     if (loading) {
         return <Spinner />;
     } else {
@@ -16,7 +21,7 @@ const Users = ({ users, loading }) => {
                 </div>
             );
         } else {
-            return <div> API error </div>;
+            return <div> API error :(</div>;
         }
     }
 };

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import TwitterContext from '../../context/twitter/twitterContext';
 
-const Search = ({ searchUsers, showClear, clear, setAlert }) => {
+const Search = ({ setAlert }) => {
+    const twitterContext = useContext(TwitterContext);
     const [text, setText] = useState('');
 
     const onChange = event => setText(event.target.value);
@@ -9,7 +11,7 @@ const Search = ({ searchUsers, showClear, clear, setAlert }) => {
     const onSubmit = event => {
         event.preventDefault();
         if (text.trim().length !== 0) {
-            searchUsers(text);
+            twitterContext.searchUsers(text);
             setText('');
         } else {
             setAlert('Enter a Name!', 'light');
@@ -31,8 +33,11 @@ const Search = ({ searchUsers, showClear, clear, setAlert }) => {
                     value="Search"
                     className="btn btn-dark btn-block"
                 />
-                {showClear && (
-                    <button className="btn btn-light btn-block" onClick={clear}>
+                {twitterContext.users.length > 0 && (
+                    <button
+                        className="btn btn-light btn-block"
+                        onClick={twitterContext.clear}
+                    >
                         Clear Results
                     </button>
                 )}
@@ -41,9 +46,6 @@ const Search = ({ searchUsers, showClear, clear, setAlert }) => {
     );
 };
 Search.propTypes = {
-    searchUsers: PropTypes.func.isRequired,
-    clear: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired,
     setAlert: PropTypes.func.isRequired
 };
 

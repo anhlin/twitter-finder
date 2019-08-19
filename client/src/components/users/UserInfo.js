@@ -1,8 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Tweets from './Tweets';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import TwitterContext from '../../context/twitter/twitterContext';
+import Spinner from '../layout/Spinner';
 
-const UserInfo = ({ userInfo, getUser, match }) => {
+const UserInfo = ({ match }) => {
+    const twitterContext = useContext(TwitterContext);
+    const { getUser, userInfo } = twitterContext;
+
     useEffect(() => {
         getUser(match.params.screen_name);
         //eslint-disable-next-line
@@ -92,15 +98,16 @@ const UserInfo = ({ userInfo, getUser, match }) => {
                         Tweets: {statuses_count}
                     </div>
                 </div>
-                <TwitterTimelineEmbed
-                    sourceType="profile"
-                    screenName={screen_name}
-                    options={{ height: 800 }}
-                />
+                <Tweets screenName={screen_name} />
             </Fragment>
         );
     } else {
-        return <div> </div>;
+        return (
+            <div>
+                {' '}
+                <Spinner> </Spinner>
+            </div>
+        );
     }
 };
 

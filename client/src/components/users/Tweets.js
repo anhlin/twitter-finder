@@ -1,33 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Component } from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import TwitterContext from '../../context/twitter/twitterContext';
 
-class Tweets extends Component {
-    state = {
-        screenName: ''
-    };
-
-    changeName = () => {
-        this.setState({ screenName: this.props.screenName });
-    };
-
-    componentDidMount() {
-        this.setState({ screenName: this.props.screenName });
-        this.props.setTweets();
-    }
-
-    render() {
-        console.log(this.state.screenName);
+const Tweets = () => {
+    const twitterContext = useContext(TwitterContext);
+    if (twitterContext.screenName) {
         return (
             <div>
                 <TwitterTimelineEmbed
                     sourceType="profile"
-                    screenName={this.state.screenName}
+                    screenName={twitterContext.screenName}
                     options={{ height: 800 }}
                 />
             </div>
         );
+    } else {
+        return <div />;
     }
-}
+};
 
 export default Tweets;

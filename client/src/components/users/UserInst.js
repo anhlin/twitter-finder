@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import TwitterContext from '../../context/twitter/twitterContext';
+
 //Functional Component
 const UserInst = props => {
     const { screen_name, profile_image_url, profile_banner_url } = props.user;
+    const twitterContext = useContext(TwitterContext);
+
+    useEffect(() => {
+        twitterContext.clearName();
+        //eslint-disable-next-line
+    }, []);
 
     return (
         <div
