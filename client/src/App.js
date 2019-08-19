@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import Navbar from "./components/layout/Navbar";
 import axios from "axios";
 import Users from "./components/users/Users";
@@ -8,88 +8,86 @@ import Search from "./components/users/Search";
 import Alert from "./components/layout/alert";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-class App extends Component {
-  state = {
-    users: [],
-    loading: false,
-    alert: null,
-    userInfo: []
+const App = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoad] = useState(false);
+  const [alert, setAlert] = useState(null);
+  const [userInfo, setUserInfo] = useState([]);
+
+  const clear = () => {
+    //this.setState({ users: [], loading: false });
+    setUsers([]);
+    setLoad(false);
   };
 
-  clear = () => {
-    this.setState({ users: [], loading: false });
-  };
-
-  searchUsers = text => {
-    //this.setState({ loading: true });
+  const searchUsers = text => {
+    setLoad(true);
     axios
       .get("/api", {
         params: { q: text }
       })
       .then(res => {
-        this.setState({ users: res.data, loading: false, alert: null });
+        setUsers(res.data);
+        setLoad(false);
+        setAlert(null);
+        //this.setState({ users: res.data, loading: false, alert: null });
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  getUser = screen_name => {
+  const getUser = screen_name => {
     axios
       .get("/api/user", {
         params: { screen_name: screen_name }
       })
       .then(res => {
-        this.setState({ userInfo: res.data });
+        setUserInfo(res.data);
+        //this.setState({ userInfo: res.data });
       });
   };
 
-  setAlert = (msg, type) => {
-    this.setState({ alert: { msg: msg, type: type } });
+  const changeAlert = (msg, type) => {
+    setAlert({ msg: msg, type: type });
+    //this.setState({ alert: { msg: msg, type: type } });
   };
 
-  render() {
-    const { users, loading, userInfo } = this.state;
-    return (
-      <Router>
-        <div className="App">
-          <Navbar title="Twitter Finder" icon="fab fa-twitter" />
-          <div className="container">
-            <Alert alert={this.state.alert} />
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={props => (
-                  <Fragment>
-                    <Search
-                      searchUsers={this.searchUsers}
-                      clear={this.clear}
-                      showClear={users.length > 0 ? true : false}
-                      setAlert={this.setAlert}
-                    />
-                    <Users loading={loading} users={users} />
-                  </Fragment>
-                )}
-              />
-              <Route
-                exact
-                path="/user/:screen_name"
-                render={props => (
-                  <UserInfo
-                    {...props}
-                    getUser={this.getUser}
-                    userInfo={userInfo}
+  return (
+    <Router>
+      <div className="App">
+        <Navbar title="Twitter Finder" icon="fab fa-twitter" />
+        <div className="container">
+          <Alert alert={alert} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Fragment>
+                  <Search
+                    searchUsers={searchUsers}
+                    clear={clear}
+                    showClear={users.length > 0 ? true : false}
+                    setAlert={changeAlert}
                   />
-                )}
-              />
-              } />
-            </Switch>
-          </div>
+                  <Users loading={loading} users={users} />
+                </Fragment>
+              )}
+            />
+            <Route
+              exact
+              path="/user/:screen_name"
+              render={props => (
+                <UserInfo {...props} getUser={getUser} userInfo={userInfo} />
+              )}
+            />
+            } />
+          </Switch>
         </div>
-      </Router>
-    );
-  }
-}
+      </div>
+    </Router>
+  );
+};
 
 export default App;
