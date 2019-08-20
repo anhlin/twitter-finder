@@ -9,7 +9,8 @@ import {
     CLEAR,
     GET_USER,
     CLEAR_NAME,
-    CHANGE_LIST
+    CHANGE_LIST,
+    CLEAR_LIST
 } from './types';
 
 const TwitterState = props => {
@@ -19,7 +20,7 @@ const TwitterState = props => {
         loading: false,
         alert: null,
         screenName: '',
-        list: 0
+        list: Math.floor(Math.random() * 17)
     };
 
     const [state, dispatch] = useReducer(twitterReducer, initialState);
@@ -55,10 +56,11 @@ const TwitterState = props => {
                     type: GET_USER,
                     payload: { data: res.data, screenName: screen_name }
                 });
+            })
+            .catch(err => {
+                console.log(err);
             });
     };
-
-    //Tweets?
 
     //Clear Users
     const clear = () => dispatch({ type: CLEAR });
@@ -66,10 +68,19 @@ const TwitterState = props => {
     //Set Loading
     const setLoad = () => dispatch({ type: SET_LOAD });
 
+    //Clear screen name
     const clearName = () => dispatch({ type: CLEAR_NAME });
 
+    //Clear the twitter list
+    const clearList = () => {
+        dispatch({ type: CLEAR_LIST });
+
+        //This makes the list refresh
+        setImmediate(() => changeList());
+    };
+
     const changeList = () => {
-        var random = Math.floor(Math.random() * 10);
+        var random = Math.floor(Math.random() * 17);
         dispatch({ type: CHANGE_LIST, payload: random });
     };
 
@@ -86,7 +97,8 @@ const TwitterState = props => {
                 screenName: state.screenName,
                 clearName,
                 list: state.list,
-                changeList
+                changeList,
+                clearList
             }}
         >
             {props.children}

@@ -4,7 +4,8 @@ import {
     CLEAR,
     GET_USER,
     CLEAR_NAME,
-    CHANGE_LIST
+    CHANGE_LIST,
+    CLEAR_LIST
 } from './types';
 
 export default (state, action) => {
@@ -44,6 +45,11 @@ export default (state, action) => {
             return {
                 ...state,
                 list: action.payload
+            };
+        case CLEAR_LIST:
+            return {
+                ...state,
+                list: -1
             };
         default:
             return state;

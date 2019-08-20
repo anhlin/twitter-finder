@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Component } from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import TwitterContext from '../../context/twitter/twitterContext';
 

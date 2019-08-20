@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import TwitterContext from '../../context/twitter/twitterContext';
+import Spinner from '../layout/Spinner';
 
 const TwitList = () => {
-    //const [list, setList] = useState(0);
     const twitterContext = useContext(TwitterContext);
+    const { list, changeList, clearList } = twitterContext;
+
     useEffect(() => {
-        twitterContext.changeList();
+        changeList();
         //eslint-disable-next-line
     }, []);
 
@@ -21,20 +23,49 @@ const TwitList = () => {
         { slug: 'Travel', ownerScreenName: 'KristaRossow' },
         { slug: 'world-leaders', ownerScreenName: 'verified' },
         { slug: 'entertainment', ownerScreenName: 'verified' },
-        { slug: 'Brands', ownerScreenName: 'AskAaronLee' }
+        { slug: 'Brands', ownerScreenName: 'AskAaronLee' },
+        { slug: 'News', ownerScreenName: 'DyLanTLLee' },
+        { slug: 'tech-companies', ownerScreenName: 'Scobleizer' },
+        { slug: 'Business-Finance', ownerScreenName: 'getLittleBird' },
+        { slug: 'NFL-Teams', ownerScreenName: 'nfl' },
+        { slug: 'Players1', ownerScreenName: 'mlb' },
+        { slug: 'NHL-Players', ownerScreenName: 'nhl' }
     ];
+    if (list >= 0) {
+        return (
+            <div>
+                <div style={{ textAlign: 'center' }}>
+                    <h1
+                        style={{
+                            padding: '25px',
+                            display: 'inline-block'
+                        }}
+                    >
+                        Random Twitter List!
+                    </h1>
+                    <i className="fas fa-redo-alt fa-lg" onClick={clearList} />
+                </div>
 
-    return (
-        <div>
-            <button onClick={twitterContext.changeList}> Refresh </button>
-            <TwitterTimelineEmbed
-                sourceType="list"
-                slug={lists[twitterContext.list].slug}
-                ownerScreenName={lists[twitterContext.list].ownerScreenName}
-                options={{ height: 700 }}
-            />
-        </div>
-    );
+                <TwitterTimelineEmbed
+                    sourceType="list"
+                    slug={lists[list].slug}
+                    ownerScreenName={lists[list].ownerScreenName}
+                    options={{ height: 700 }}
+                />
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                {' '}
+                <h1 style={{ textAlign: 'center', padding: '25px' }}>
+                    Random Twitter List!
+                </h1>
+                <i className="fas fa-redo-alt" />
+                <Spinner />
+            </div>
+        );
+    }
 };
 
 export default TwitList;

@@ -1,25 +1,21 @@
 import './App.css';
-import React, { useState, Fragment, useContext } from 'react';
+import React, { useState, Fragment } from 'react';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import UserInfo from './components/users/UserInfo';
 import Search from './components/users/Search';
 import Alert from './components/layout/alert';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import TwitterContext from './context/twitter/twitterContext';
 import TwitList from './components/users/TwitList';
 
 import TwitterState from './context/twitter/twitterState';
 
 const App = () => {
     const [alert, setAlert] = useState(null);
-    const twitterContext = useContext(TwitterContext);
 
     const changeAlert = (msg, type) => {
         setAlert({ msg: msg, type: type });
         setTimeout(() => setAlert(null), 3000);
-        //this.setState({ alert: { msg: msg, type: type } });
     };
 
     return (
@@ -35,12 +31,7 @@ const App = () => {
                                 path="/"
                                 render={props => (
                                     <Fragment>
-                                        <h1
-                                            style={{
-                                                textAlign: 'center',
-                                                padding: '25px'
-                                            }}
-                                        >
+                                        <h1 className="title">
                                             Search for Users
                                         </h1>
                                         <Search setAlert={changeAlert} />
@@ -56,13 +47,8 @@ const App = () => {
                             } />
                         </Switch>
                     </div>
-                    <div className="container">
+                    <div className="container lists">
                         <Fragment>
-                            <h1
-                                style={{ textAlign: 'center', padding: '25px' }}
-                            >
-                                Random Twitter List!
-                            </h1>
                             <TwitList />
                         </Fragment>
                     </div>

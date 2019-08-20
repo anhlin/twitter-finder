@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap');
 
 /* Global Styles */
 :root {
@@ -16,7 +17,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Hepta Slab', serif;
     font-size: 1rem;
     line-height: 1.6;
     background-color: rgb(216, 169, 214);
@@ -42,9 +43,28 @@ img {
     width: 100%;
 }
 
+.fa-lg {
+    margin-bottom: 20px;
+    color: #00ffff;
+}
+
+.fa-2x {
+    margin-top: 15px;
+}
+
+.fa-lg:hover {
+    color: #333;
+}
+
+.search {
+    overflow: hidden;
+    padding-right: 0.5em;
+    width: '90%';
+}
+
 /* Utilities */
 .container {
-    max-width: 1250px;
+    max-width: 1450px;
     margin: auto;
     overflow: hidden;
     padding: 0 2rem;
@@ -53,6 +73,14 @@ img {
     margin-bottom: 50px;
     border-radius: 25px;
     border: 2px solid #00ffff;
+}
+
+.users {
+    max-width: 1450px;
+}
+
+.lists {
+    max-width: 1250px;
 }
 
 /* Text Styles*/
@@ -117,15 +145,15 @@ img {
 }
 
 i {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 /* Cards */
 .card {
     padding: 1rem;
-    border: #ccc 1px dotted;
     margin: 0.7rem 0;
 }
+
 /* List */
 .list {
     margin: 0.5rem 0;
@@ -133,6 +161,10 @@ i {
 
 .list li {
     padding-bottom: 0.3rem;
+}
+
+.h1 {
+    display: inline-block;
 }
 
 /* Padding */
@@ -206,8 +238,14 @@ i {
     grid-gap: 1rem;
 }
 
+.title {
+    text-align: center;
+    padding: 25px;
+}
+
 .btn {
     display: inline-block;
+    transition: transform 0.2s;
     background: var(--light-color);
     color: #333;
     padding: 0.4rem 1.3rem;
@@ -215,7 +253,6 @@ i {
     border: none;
     cursor: pointer;
     margin-right: 0.5rem;
-    transition: opacity 0.2s ease-in;
     outline: none;
     border-radius: 8px;
     text-align: center;
@@ -227,10 +264,21 @@ i {
     margin: 0;
 }
 
+.search-btn {
+    float: right;
+}
+
 .btn-block {
     display: inline-block;
     width: 49.3%;
     text-align: center;
+}
+
+.btn-clear {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 
 .btn-sm {
@@ -308,6 +356,7 @@ i {
 }
 
 .btn:hover {
+    transform: scale(1.1);
     opacity: 0.8;
 }
 
@@ -387,6 +436,16 @@ table th {
 
 .navbar .welcome span {
     margin-right: 0.6rem;
+}
+.inst {
+    transition: transform 0.2s; /* Animation */
+    margin: 3 auto;
+}
+
+.inst:hover {
+    transform: scale(
+        1.1
+    ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 /* Mobile Styles */

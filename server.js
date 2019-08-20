@@ -18,12 +18,14 @@ var T = new Twit({
 app.use(cors());
 app.use(bodyParser.json());
 
+//Get users
 app.get('/api', (req, res) => {
     T.get('users/search', { Name: ' ', q: req.query.q }, (err, data) => {
         res.send(data);
     });
 });
 
+//Get user info
 app.get('/api/user', (req, res) => {
     T.get(
         'users/lookup',

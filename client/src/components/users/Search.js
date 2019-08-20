@@ -22,20 +22,23 @@ const Search = ({ setAlert }) => {
         <div>
             <form onSubmit={onSubmit} className="form">
                 <input
-                    type="text"
-                    name="text"
-                    placeholder="Enter a Name (e.g. 'Bill')"
-                    value={text}
-                    onChange={onChange}
-                />
-                <input
+                    className="btn btn-dark search-btn"
                     type="submit"
                     value="Search"
-                    className="btn btn-dark btn-block"
                 />
+
+                <div className="search">
+                    <input
+                        type="text"
+                        name="text"
+                        placeholder="Enter a name or screen name"
+                        value={text}
+                        onChange={onChange}
+                    />
+                </div>
                 {twitterContext.users.length > 0 && (
                     <button
-                        className="btn btn-light btn-block"
+                        className="btn btn-light btn-clear"
                         onClick={twitterContext.clear}
                     >
                         Clear Results

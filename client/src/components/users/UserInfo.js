@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Tweets from './Tweets';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import TwitterContext from '../../context/twitter/twitterContext';
 import Spinner from '../layout/Spinner';
 
@@ -30,10 +29,7 @@ const UserInfo = ({ match }) => {
         return (
             <Fragment>
                 <Link to="/">
-                    <i
-                        className="fas fa-arrow-left"
-                        style={{ width: '938px' }}
-                    />
+                    <i className="fas fa-arrow-left fa-2x" />
                 </Link>
 
                 <div
@@ -53,6 +49,12 @@ const UserInfo = ({ match }) => {
                                 <p>@{screen_name}</p>
                             </Fragment>
                         )}
+                        <strong>Verified:</strong>
+                        {verified ? (
+                            <i className="fas fa-check text-success" />
+                        ) : (
+                            <i className="fas fa-times-circle text-danger" />
+                        )}
                     </div>
                     <div>
                         {description && (
@@ -61,6 +63,18 @@ const UserInfo = ({ match }) => {
                                 <p>{description}</p>
                             </Fragment>
                         )}
+
+                        <ul>
+                            <li>
+                                {location && (
+                                    <Fragment>
+                                        <strong>Location: </strong> {location}
+                                    </Fragment>
+                                )}
+                            </li>
+
+                            <li />
+                        </ul>
                         <a
                             href={'https://twitter.com/' + screen_name}
                             className="btn btn-dark my-1"
@@ -72,30 +86,14 @@ const UserInfo = ({ match }) => {
                                 Visit Website
                             </a>
                         )}
-                        <ul>
-                            <li>
-                                {location && (
-                                    <Fragment>
-                                        <strong>Location: </strong> {location}
-                                    </Fragment>
-                                )}
-                            </li>
-                            Verified:
-                            {verified ? (
-                                <i className="fas fa-check text-success" />
-                            ) : (
-                                <i className="fas fa-times-circle text-danger" />
-                            )}
-                            <li />
-                        </ul>
                     </div>
                 </div>
                 <div className="card text-center">
                     <div className="badge badge-primary">
-                        Followers: {followers_count}
+                        Followers: {followers_count.toLocaleString()}
                     </div>
                     <div className="badge badge-light">
-                        Tweets: {statuses_count}
+                        Tweets: {statuses_count.toLocaleString()}
                     </div>
                 </div>
                 <Tweets screenName={screen_name} />
