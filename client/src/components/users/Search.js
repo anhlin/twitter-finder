@@ -20,6 +20,7 @@ const Search = ({ setAlert }) => {
 
     return (
         <div>
+            <h1 className="title">Search for Users</h1>
             <form onSubmit={onSubmit} className="form">
                 <input
                     className="btn btn-dark search-btn"

@@ -31,9 +31,6 @@ const App = () => {
                                 path="/"
                                 render={props => (
                                     <Fragment>
-                                        <h1 className="title">
-                                            Search for Users
-                                        </h1>
                                         <Search setAlert={changeAlert} />
                                         <Users />
                                     </Fragment>

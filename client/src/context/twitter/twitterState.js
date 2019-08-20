@@ -80,8 +80,13 @@ const TwitterState = props => {
     };
 
     const changeList = () => {
-        var random = Math.floor(Math.random() * 17);
-        dispatch({ type: CHANGE_LIST, payload: random });
+        var inc;
+        if (state.list < 16) {
+            inc = state.list + 1;
+        } else {
+            inc = 0;
+        }
+        dispatch({ type: CHANGE_LIST, payload: inc });
     };
 
     return (
