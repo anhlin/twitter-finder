@@ -1,16 +1,20 @@
 import './App.css';
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useContext } from 'react';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import UserInfo from './components/users/UserInfo';
 import Search from './components/users/Search';
 import Alert from './components/layout/alert';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import TwitterContext from './context/twitter/twitterContext';
+import TwitList from './components/users/TwitList';
 
 import TwitterState from './context/twitter/twitterState';
 
 const App = () => {
     const [alert, setAlert] = useState(null);
+    const twitterContext = useContext(TwitterContext);
 
     const changeAlert = (msg, type) => {
         setAlert({ msg: msg, type: type });
@@ -31,6 +35,14 @@ const App = () => {
                                 path="/"
                                 render={props => (
                                     <Fragment>
+                                        <h1
+                                            style={{
+                                                textAlign: 'center',
+                                                padding: '25px'
+                                            }}
+                                        >
+                                            Search for Users
+                                        </h1>
                                         <Search setAlert={changeAlert} />
                                         <Users />
                                     </Fragment>
@@ -43,6 +55,16 @@ const App = () => {
                             />
                             } />
                         </Switch>
+                    </div>
+                    <div className="container">
+                        <Fragment>
+                            <h1
+                                style={{ textAlign: 'center', padding: '25px' }}
+                            >
+                                Random Twitter List!
+                            </h1>
+                            <TwitList />
+                        </Fragment>
                     </div>
                 </div>
             </Router>

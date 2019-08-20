@@ -3,7 +3,14 @@ import axios from 'axios';
 import twitterContext from './twitterContext';
 import twitterReducer from './twitterReducer';
 
-import { SEARCH_USERS, SET_LOAD, CLEAR, GET_USER, CLEAR_NAME } from './types';
+import {
+    SEARCH_USERS,
+    SET_LOAD,
+    CLEAR,
+    GET_USER,
+    CLEAR_NAME,
+    CHANGE_LIST
+} from './types';
 
 const TwitterState = props => {
     const initialState = {
@@ -11,7 +18,8 @@ const TwitterState = props => {
         userInfo: [],
         loading: false,
         alert: null,
-        screenName: ''
+        screenName: '',
+        list: 0
     };
 
     const [state, dispatch] = useReducer(twitterReducer, initialState);
@@ -60,6 +68,11 @@ const TwitterState = props => {
 
     const clearName = () => dispatch({ type: CLEAR_NAME });
 
+    const changeList = () => {
+        var random = Math.floor(Math.random() * 10);
+        dispatch({ type: CHANGE_LIST, payload: random });
+    };
+
     return (
         <twitterContext.Provider
             value={{
@@ -71,7 +84,9 @@ const TwitterState = props => {
                 clear,
                 getUser,
                 screenName: state.screenName,
-                clearName
+                clearName,
+                list: state.list,
+                changeList
             }}
         >
             {props.children}

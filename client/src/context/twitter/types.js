@@ -4,3 +4,4 @@ export const CLEAR = 'CLEAR';
 export const SET_LOAD = 'SET_LOAD';
 export const SET_ALERT = 'SET_ALERT';
 export const CLEAR_NAME = 'CLEAR_NAME';
+export const CHANGE_LIST = 'CHANGE_LIST';

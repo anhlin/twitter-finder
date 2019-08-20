@@ -50,6 +50,9 @@ img {
     padding: 0 2rem;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     background-color: #ffff;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    border: 2px solid #00ffff;
 }
 
 /* Text Styles*/
