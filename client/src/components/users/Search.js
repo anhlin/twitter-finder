@@ -19,7 +19,7 @@ const Search = ({ setAlert }) => {
     };
 
     return (
-        <div>
+        <div className="search-ctn">
             <h1 className="title">Search for Users</h1>
             <form onSubmit={onSubmit} className="form">
                 <input
@@ -35,11 +35,12 @@ const Search = ({ setAlert }) => {
                         placeholder="Enter a name or screen name"
                         value={text}
                         onChange={onChange}
+                        style={{ borderRadius: '25px' }}
                     />
                 </div>
                 {twitterContext.users.length > 0 && (
                     <button
-                        className="btn btn-light btn-clear"
+                        className="btn btn-clear"
                         onClick={twitterContext.clear}
                     >
                         Clear Results

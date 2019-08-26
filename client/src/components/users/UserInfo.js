@@ -28,75 +28,67 @@ const UserInfo = ({ match }) => {
         } = userInfo[0];
         return (
             <Fragment>
-                <Link to="/">
-                    <i className="fas fa-arrow-left fa-2x" />
-                </Link>
-
-                <div
-                    className="card grid-2"
-                    style={{ backgroundImage: { profile_banner_url } }}
-                >
-                    <div className="all-center">
-                        <img
-                            src={profile_image_url.replace('_normal', '')}
-                            className="round-img"
-                            alt=""
-                            style={{ width: '150px' }}
-                        />
-                        <h1>{name}</h1>
-                        {screen_name && (
-                            <Fragment>
-                                <p>@{screen_name}</p>
-                            </Fragment>
-                        )}
-                        <strong>Verified:</strong>
-                        {verified ? (
-                            <i className="fas fa-check text-success" />
-                        ) : (
-                            <i className="fas fa-times-circle text-danger" />
-                        )}
-                    </div>
-                    <div>
-                        {description && (
-                            <Fragment>
-                                <h3>Bio</h3>
-                                <p>{description}</p>
-                            </Fragment>
-                        )}
-
-                        <ul>
-                            <li>
-                                {location && (
-                                    <Fragment>
-                                        <strong>Location: </strong> {location}
-                                    </Fragment>
+                <div className="info-ctn">
+                    <Link to="/search">
+                        <i className="fas fa-arrow-left fa-2x" />
+                    </Link>
+                    <div className="card grid-2">
+                        <div className="all-center">
+                            <img
+                                src={profile_image_url.replace('_normal', '')}
+                                className="round-img"
+                                alt=""
+                                style={{ width: '150px' }}
+                            />
+                            <h1>{name}</h1>
+                            {screen_name && (
+                                <Fragment>
+                                    <p>@{screen_name}</p>
+                                </Fragment>
+                            )}
+                            <strong>Verified:</strong>
+                            {verified ? (
+                                <i className="fas fa-check text-success" />
+                            ) : (
+                                <i className="fas fa-times-circle text-danger" />
+                            )}
+                        </div>
+                        <div>
+                            {description && (
+                                <Fragment>
+                                    <h3>Bio</h3>
+                                    <p>{description}</p>
+                                </Fragment>
+                            )}
+                            {location && (
+                                <Fragment>
+                                    <strong>Location: </strong> {location}
+                                </Fragment>
+                            )}
+                            <div
+                                style={{ display: 'block', marginTop: '30px' }}
+                            >
+                                <button
+                                    href={'https://twitter.com/' + screen_name}
+                                >
+                                    Visit Twitter Profile
+                                </button>
+                                {url && (
+                                    <button href={url}>Visit Website</button>
                                 )}
-                            </li>
-
-                            <li />
-                        </ul>
-                        <a
-                            href={'https://twitter.com/' + screen_name}
-                            className="btn btn-dark my-1"
-                        >
-                            Visit Twitter Profile
-                        </a>
-                        {url && (
-                            <a href={url} className="btn btn-dark my-1">
-                                Visit Website
-                            </a>
-                        )}
+                            </div>
+                        </div>
                     </div>
+                    <div className="card text-center">
+                        <div className="badge badge-primary">
+                            Followers: {followers_count.toLocaleString()}
+                        </div>
+                        <div className="badge badge-light">
+                            Tweets: {statuses_count.toLocaleString()}
+                        </div>
+                    </div>
+                    <Tweets screenName={screen_name} />
                 </div>
-                <div className="card text-center">
-                    <div className="badge badge-primary">
-                        Followers: {followers_count.toLocaleString()}
-                    </div>
-                    <div className="badge badge-light">
-                        Tweets: {statuses_count.toLocaleString()}
-                    </div>
-                </div>
-                <Tweets screenName={screen_name} />
             </Fragment>
         );
     } else {

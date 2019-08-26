@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, Fragment } from 'react';
 import Navbar from './components/layout/Navbar';
+import Home from './components/pages/Home';
 import Users from './components/users/Users';
 import UserInfo from './components/users/UserInfo';
 import Search from './components/users/Search';
@@ -26,9 +27,10 @@ const App = () => {
                     <div className="container">
                         <Alert alert={alert} />
                         <Switch>
+                            <Route exact path="/" component={Home}></Route>
                             <Route
                                 exact
-                                path="/"
+                                path="/search"
                                 render={props => (
                                     <Fragment>
                                         <Search setAlert={changeAlert} />
@@ -41,13 +43,12 @@ const App = () => {
                                 path="/user/:screen_name"
                                 render={props => <UserInfo {...props} />}
                             />
-                            } />
+                            <Route
+                                exact
+                                path="/random"
+                                component={TwitList}
+                            ></Route>
                         </Switch>
-                    </div>
-                    <div className="container lists">
-                        <Fragment>
-                            <TwitList />
-                        </Fragment>
                     </div>
                 </div>
             </Router>

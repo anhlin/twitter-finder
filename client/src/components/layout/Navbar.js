@@ -6,10 +6,14 @@ const Navbar = props => {
         <nav className="navbar bg-primary">
             <Link to="/">
                 <h1>
-                    <i className={props.icon} />
-                    {props.title}
+                    <i className={props.icon} /> {props.title}
                 </h1>
             </Link>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+            </ul>
         </nav>
     );
 };

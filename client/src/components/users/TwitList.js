@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import { Link } from 'react-router-dom';
+
 import TwitterContext from '../../context/twitter/twitterContext';
 import Spinner from '../layout/Spinner';
 
@@ -33,7 +35,10 @@ const TwitList = () => {
     ];
     if (list >= 0) {
         return (
-            <div>
+            <div className="info-ctr">
+                <Link to="/search">
+                    <i className="fas fa-arrow-left fa-2x" />
+                </Link>
                 <div style={{ textAlign: 'center' }}>
                     <h1
                         style={{
@@ -43,15 +48,16 @@ const TwitList = () => {
                     >
                         Random Twitter List!
                     </h1>
-                    <i className="fas fa-redo-alt fa-lg" onClick={clearList} />
+                    <i className="fas fa-redo-alt fa-2x" onClick={clearList} />
                 </div>
-
-                <TwitterTimelineEmbed
-                    sourceType="list"
-                    slug={lists[list].slug}
-                    ownerScreenName={lists[list].ownerScreenName}
-                    options={{ height: 700 }}
-                />
+                <div className="tweet-ctn">
+                    <TwitterTimelineEmbed
+                        sourceType="list"
+                        slug={lists[list].slug}
+                        ownerScreenName={lists[list].ownerScreenName}
+                        options={{ height: 700 }}
+                    />
+                </div>
             </div>
         );
     } else {

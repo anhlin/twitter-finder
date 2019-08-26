@@ -3,24 +3,24 @@
 
 /* Global Styles */
 :root {
-    --primary-color: #00ffff;
+    --primary-color: rgb(173, 216, 230);
     --dark-color: #333333;
     --light-color: #f4f4f4;
     --danger-color: #dc3545;
     --success-color: #28a745;
 }
 
-* {
+/** {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+}*/
 
 body {
     font-family: 'Hepta Slab', serif;
     font-size: 1rem;
     line-height: 1.6;
-    background-color: rgb(216, 169, 214);
+    background-color: rgb(173, 216, 230);
     color: #333;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -40,19 +40,21 @@ ul {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 .fa-lg {
     margin-bottom: 20px;
-    color: #00ffff;
+    color: var(--primary-color);
 }
 
 .fa-2x {
     margin-top: 15px;
+    color: var(--primary-color);
 }
 
-.fa-lg:hover {
+.fa-2x:hover {
     color: #333;
 }
 
@@ -63,7 +65,7 @@ img {
 }
 
 /* Utilities */
-.container {
+.info-ctn {
     max-width: 1450px;
     margin: auto;
     overflow: hidden;
@@ -72,7 +74,47 @@ img {
     background-color: #ffff;
     margin-bottom: 50px;
     border-radius: 25px;
-    border: 2px solid #00ffff;
+}
+
+.search-ctn {
+    max-width: 1450px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    background-color: #ffff;
+    margin-bottom: 50px;
+}
+
+.tweet-ctn {
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 2rem 2rem 2rem 2rem;
+    background-color: #ffff;
+    margin-bottom: 50px;
+}
+.user-ctn {
+    max-width: 1450px;
+    margin: auto;
+    overflow: hidden;
+    padding: 2rem 2rem 2rem 2rem;
+    background-color: #ffff;
+    margin-bottom: 50px;
+}
+.user-ctn:empty {
+    background-color: rgb(173, 216, 230);
+}
+
+*:focus {
+    outline: none;
+}
+.ctr {
+    position: fixed;
+    top: 50%;
+    left: 46.5%;
+    margin-top: -50px;
+    margin-left: -70px;
 }
 
 .users {
@@ -150,7 +192,7 @@ i {
 
 /* Cards */
 .card {
-    padding: 1rem;
+    padding: 0.5rem;
     margin: 0.7rem 0;
 }
 
@@ -246,7 +288,7 @@ i {
 .btn {
     display: inline-block;
     transition: transform 0.2s;
-    background: var(--light-color);
+    background: #fff;
     color: #333;
     padding: 0.4rem 1.3rem;
     font-size: 1rem;
@@ -296,6 +338,47 @@ i {
     background: var(--light-color);
     color: #333;
     border-radius: 5px;
+}
+
+button {
+    background: #fff;
+    color: rgb(173, 216, 230);
+    border: 3px solid rgb(173, 216, 230);
+    position: relative;
+    height: 60px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    padding: 0.4rem 1.3rem;
+    margin-right: 1rem;
+}
+button:hover {
+    background: #fff;
+    color: rgb(173, 216, 230);
+}
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: rgb(173, 216, 230);
+    transition: 400ms ease all;
+}
+button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
 }
 
 .alert {
@@ -414,10 +497,11 @@ table th {
     justify-content: space-between;
     align-items: center;
     padding: 0.7rem 2rem;
-    z-index: 1;
-    width: 100%;
+    width: 95%;
     opacity: 0.9;
+    z-index: 1;
     margin-bottom: 1rem;
+    overflow: hidden;
 }
 
 .navbar ul {
@@ -446,6 +530,24 @@ table th {
     transform: scale(
         1.1
     ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.ctn-enter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+.ctn-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+.ctn-exit {
+    opacity: 1;
+}
+.ctn-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
 }
 
 /* Mobile Styles */

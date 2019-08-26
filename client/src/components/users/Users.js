@@ -14,7 +14,7 @@ const Users = () => {
     } else {
         if (Array.isArray(users)) {
             return (
-                <div style={userStyle}>
+                <div className="user-ctn" style={userStyle}>
                     {users.map(user => (
                         <UserInst key={user.id} user={user} />
                     ))}

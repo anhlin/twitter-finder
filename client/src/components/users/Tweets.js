@@ -6,7 +6,7 @@ const Tweets = () => {
     const twitterContext = useContext(TwitterContext);
     if (twitterContext.screenName) {
         return (
-            <div>
+            <div className="tweet-ctn">
                 <TwitterTimelineEmbed
                     sourceType="profile"
                     screenName={twitterContext.screenName}
