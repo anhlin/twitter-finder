@@ -23,8 +23,7 @@ const UserInfo = ({ match }) => {
             location,
             description,
             url,
-            statuses_count,
-            profile_banner_url
+            statuses_count
         } = userInfo[0];
         return (
             <div className="info-ctn">
@@ -52,10 +51,10 @@ const UserInfo = ({ match }) => {
                             <i className="fas fa-times-circle text-danger" />
                         )}
                     </div>
-                    <div>
+                    <div className="all-center">
                         {description && (
                             <Fragment>
-                                <h3>Bio</h3>
+                                <strong>Bio</strong>
                                 <p>{description}</p>
                             </Fragment>
                         )}

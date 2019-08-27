@@ -35,7 +35,7 @@ const TwitList = () => {
     ];
     if (list >= 0) {
         return (
-            <div className="info-ctr">
+            <div className="info-ctn">
                 <Link to="/search">
                     <i className="fas fa-arrow-left fa-2x" />
                 </Link>
