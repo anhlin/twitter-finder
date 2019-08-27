@@ -340,7 +340,8 @@ i {
     border-radius: 5px;
 }
 
-.button {
+.button,
+button {
     background: #fff;
     color: rgb(173, 216, 230);
     border: 3px solid rgb(173, 216, 230);
@@ -354,12 +355,15 @@ i {
     padding: 0.4rem 1.3rem;
     margin-right: 1rem;
 }
-.button:hover {
+.button,
+button:hover {
     background: #fff;
     color: rgb(173, 216, 230);
 }
-.button:before,
-.button:after {
+.button,
+button:before,
+.button,
+button:after {
     content: '';
     position: absolute;
     top: 0;
@@ -369,14 +373,17 @@ i {
     background: rgb(173, 216, 230);
     transition: 400ms ease all;
 }
-.button:after {
+.button,
+button:after {
     right: inherit;
     top: inherit;
     left: 0;
     bottom: 0;
 }
-.button:hover:before,
-.button:hover:after {
+.button,
+button:hover:before,
+.button,
+button:hover:after {
     width: 100%;
     transition: 800ms ease all;
 }
