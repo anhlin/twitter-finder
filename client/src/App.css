@@ -340,7 +340,6 @@ i {
     border-radius: 5px;
 }
 
-.button,
 button {
     background: #fff;
     color: rgb(173, 216, 230);
@@ -355,14 +354,11 @@ button {
     padding: 0.4rem 1.3rem;
     margin-right: 1rem;
 }
-.button,
 button:hover {
     background: #fff;
     color: rgb(173, 216, 230);
 }
-.button,
 button:before,
-.button,
 button:after {
     content: '';
     position: absolute;
@@ -373,17 +369,55 @@ button:after {
     background: rgb(173, 216, 230);
     transition: 400ms ease all;
 }
-.button,
 button:after {
     right: inherit;
     top: inherit;
     left: 0;
     bottom: 0;
 }
-.button,
 button:hover:before,
-.button,
 button:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+.button {
+    background: #fff;
+    color: rgb(173, 216, 230);
+    border: 3px solid rgb(173, 216, 230);
+    position: relative;
+    height: 60px;
+    font-size: 1.4em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    padding: 0.4rem 1.3rem;
+    margin-right: 1rem;
+}
+.button:hover {
+    background: #fff;
+    color: rgb(173, 216, 230);
+}
+.button:before,
+.button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: rgb(173, 216, 230);
+    transition: 400ms ease all;
+}
+.button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+.button:hover:before,
+.button:hover:after {
     width: 100%;
     transition: 800ms ease all;
 }
