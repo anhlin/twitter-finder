@@ -64,10 +64,17 @@ const UserInfo = ({ match }) => {
                             </Fragment>
                         )}
                         <div style={{ display: 'block', marginTop: '30px' }}>
-                            <button href={'https://twitter.com/' + screen_name}>
+                            <a
+                                href={'https://twitter.com/' + screen_name}
+                                className="button"
+                            >
                                 Visit Twitter Profile
-                            </button>
-                            {url && <button href={url}>Visit Website</button>}
+                            </a>
+                            {url && (
+                                <a href={url} className="button">
+                                    Visit Website
+                                </a>
+                            )}
                         </div>
                     </div>
                 </div>
