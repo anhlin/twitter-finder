@@ -109,10 +109,10 @@ img {
 *:focus {
     outline: none;
 }
-.ctr {
+.button-wrapper {
     position: fixed;
     top: 50%;
-    left: 46.5%;
+    left: 46.8%;
     margin-top: -50px;
     margin-left: -70px;
 }
