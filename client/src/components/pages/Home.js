@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return (
         <div>
-            <div className="button-wrapper ">
-                <Link to="/search">
-                    <button className="button">Search</button>
-                </Link>
-                <Link to="/random">
-                    <button className="button">Random</button>
-                </Link>
+            <div className="button-wrapper">
+                <div className="d-flex justify-content-center">
+                    <Link to="/search">
+                        <button className="button">Search</button>
+                    </Link>
+                    <Link to="/random">
+                        <button className="button">Random</button>
+                    </Link>
+                </div>
             </div>
             <p
                 style={{
