@@ -30,7 +30,7 @@ const UserInfo = ({ match }) => {
                 <Link to="/search">
                     <i className="fas fa-arrow-left fa-2x" />
                 </Link>
-                <div className="card grid-2">
+                <div className="cardo grid-2 pt-2 pr-2">
                     <div className="all-center">
                         <img
                             src={profile_image_url.replace('_normal', '')}
@@ -63,22 +63,26 @@ const UserInfo = ({ match }) => {
                                 <strong>Location: </strong> {location}
                             </Fragment>
                         )}
-                        <div style={{ display: 'block', marginTop: '30px' }}>
-                            <a
-                                href={'https://twitter.com/' + screen_name}
-                                className="button"
-                            >
-                                Visit Twitter Profile
-                            </a>
-                            {url && (
-                                <a href={url} className="button">
-                                    Visit Website
+                        <div className="row pt-3">
+                            <div className="col-12 pt-5 pb-5">
+                                <a
+                                    href={'https://twitter.com/' + screen_name}
+                                    className="button"
+                                >
+                                    Visit Twitter Profile
                                 </a>
-                            )}
+                            </div>
+                            <div className="col-12">
+                                {url && (
+                                    <a href={url} className="button">
+                                        Visit Website
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="card text-center">
+                <div className="cardo text-center">
                     <div className="badge badge-primary">
                         Followers: {followers_count.toLocaleString()}
                     </div>

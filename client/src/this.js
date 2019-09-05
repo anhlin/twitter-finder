@@ -77,3 +77,32 @@ var obj = {
 
 //cameras.des(); //UNDEFINED
 //cameras.myDes(); //600
+
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+}
+
+function Food(name, price) {
+    //Product.call(this, name, price);
+    Product.apply(this, [name, price]);
+    this.category = 'food';
+}
+
+console.log(new Food('cheese', 5).category);
+
+function temp() {
+    console.log(global + 1);
+}
+
+temp();
+var global = 1;
+
+function Car() {}
+
+Car.prototype.drive = function() {
+    console.log('vroom');
+};
+
+var honda = new Car();
+honda.drive();

@@ -20,33 +20,38 @@ const Search = ({ setAlert }) => {
 
     return (
         <div className="search-ctn">
-            <h1 className="title">Search for Users</h1>
-            <form onSubmit={onSubmit} className="form">
-                <input
-                    className="btn btn-dark search-btn"
-                    type="submit"
-                    value="Search"
-                />
-
-                <div className="search">
-                    <input
-                        type="text"
-                        name="text"
-                        placeholder="Enter a name or screen name"
-                        value={text}
-                        onChange={onChange}
-                        style={{ borderRadius: '25px' }}
-                    />
+            <div className="row align-items-center">
+                <div className="col-12">
+                    <h1 className="title">Search for Users</h1>
                 </div>
-                {twitterContext.users.length > 0 && (
-                    <button
-                        className="btn btn-clear"
-                        onClick={twitterContext.clear}
-                    >
-                        Clear Results
-                    </button>
-                )}
-            </form>
+                <div className="col-12">
+                    <form onSubmit={onSubmit} className="form">
+                        <input
+                            className="btn btn-dark search-btn"
+                            type="submit"
+                            value="Search"
+                        />
+                        <div className="search">
+                            <input
+                                type="text"
+                                name="text"
+                                placeholder="  Enter a name or screen name"
+                                value={text}
+                                onChange={onChange}
+                                style={{ borderRadius: '10px 10px 10px 10px' }}
+                            />
+                        </div>
+                        {twitterContext.users.length > 0 && (
+                            <button
+                                className="btn btn-clear"
+                                onClick={twitterContext.clear}
+                            >
+                                Clear Results
+                            </button>
+                        )}
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

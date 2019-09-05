@@ -12,24 +12,24 @@ const Users = () => {
     if (loading) {
         return <Spinner />;
     } else {
-        if (Array.isArray(users)) {
+        if (Array.isArray(users) && users.length > 0) {
             return (
-                <div className="user-ctn" style={userStyle}>
-                    {users.map(user => (
-                        <UserInst key={user.id} user={user} />
-                    ))}
+                <div className="user-ctn">
+                    <div className="row">
+                        {users.map(user => (
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                <UserInst key={user.id} user={user} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             );
+        } else if (Array.isArray(users)) {
+            return <div></div>;
         } else {
             return <div> API error :(</div>;
         }
     }
-};
-
-const userStyle = {
-    display: ' grid',
-    gridTemplateColumns: 'repeat(4, 3fr)',
-    gridGap: '1rem'
 };
 
 export default Users;

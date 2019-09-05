@@ -24,32 +24,31 @@ const App = () => {
             <Router>
                 <div className="App">
                     <Navbar title="Twitter Finder" icon="fab fa-twitter" />
-                    <div className="container">
-                        <Alert alert={alert} />
-                        <Switch>
-                            <Route exact path="/" component={Home}></Route>
-                            <Route
-                                exact
-                                path="/search"
-                                render={props => (
-                                    <Fragment>
-                                        <Search setAlert={changeAlert} />
-                                        <Users />
-                                    </Fragment>
-                                )}
-                            />
-                            <Route
-                                exact
-                                path="/user/:screen_name"
-                                render={props => <UserInfo {...props} />}
-                            />
-                            <Route
-                                exact
-                                path="/random"
-                                component={TwitList}
-                            ></Route>
-                        </Switch>
-                    </div>
+                    <Alert alert={alert} />
+                    <Switch>
+                        <Route exact path="/" component={Home}></Route>
+                        <Route
+                            exact
+                            path="/search"
+                            render={props => (
+                                <Fragment>
+                                    <Search setAlert={changeAlert} />
+                                    <Users />
+                                </Fragment>
+                            )}
+                        />
+
+                        <Route
+                            exact
+                            path="/user/:screen_name"
+                            render={props => <UserInfo {...props} />}
+                        />
+                        <Route
+                            exact
+                            path="/random"
+                            component={TwitList}
+                        ></Route>
+                    </Switch>
                 </div>
             </Router>
         </TwitterState>

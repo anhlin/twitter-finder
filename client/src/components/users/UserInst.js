@@ -14,7 +14,7 @@ const UserInst = props => {
     return (
         <Link to={`/user/${screen_name}`}>
             <div
-                className="card text-center inst"
+                className="cardo text-center inst"
                 style={{
                     backgroundImage: 'url(' + profile_banner_url + ')',
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -25,7 +25,7 @@ const UserInst = props => {
                 <img
                     src={profile_image_url.replace('_normal', '')}
                     alt=""
-                    className="round-img"
+                    className="round-img pb-5"
                     style={{ width: '100px' }}
                 />
                 <div style={{ backgroundColor: 'black', opacity: 0.5 }}>
