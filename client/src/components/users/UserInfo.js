@@ -33,12 +33,14 @@ const UserInfo = ({ match }) => {
                 <div className="cardo grid-2 pt-2 pr-2">
                     <div className="all-center">
                         <img
-                            src={profile_image_url.replace('_normal', '')}
+                            src={profile_image_url
+                                .replace('_normal', '')
+                                .replace('http', 'https')}
                             className="round-img"
                             alt=""
                             style={{ width: '150px' }}
                         />
-                        <h1>{name}</h1>
+                        <h1 className="pt-4">{name}</h1>
                         {screen_name && (
                             <Fragment>
                                 <p>@{screen_name}</p>
@@ -82,7 +84,7 @@ const UserInfo = ({ match }) => {
                         </div>
                     </div>
                 </div>
-                <div className="cardo text-center">
+                <div className="cardo text-center mt-4">
                     <div className="badge badge-primary">
                         Followers: {followers_count.toLocaleString()}
                     </div>
@@ -96,7 +98,6 @@ const UserInfo = ({ match }) => {
     } else {
         return (
             <div>
-                {' '}
                 <Spinner> </Spinner>
             </div>
         );

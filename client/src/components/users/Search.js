@@ -27,15 +27,15 @@ const Search = ({ setAlert }) => {
                 <div className="col-12">
                     <form onSubmit={onSubmit} className="form">
                         <input
-                            className="btn btn-dark search-btn"
+                            className="btn btn-dark search-btn "
                             type="submit"
                             value="Search"
                         />
-                        <div className="search">
+                        <div className="search pr-1">
                             <input
                                 type="text"
                                 name="text"
-                                placeholder="  Enter a name or screen name"
+                                placeholder="Enter a name or screen name"
                                 value={text}
                                 onChange={onChange}
                                 style={{ borderRadius: '10px 10px 10px 10px' }}

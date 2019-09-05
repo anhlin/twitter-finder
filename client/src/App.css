@@ -10,12 +10,6 @@
     --success-color: #28a745;
 }
 
-/** {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}*/
-
 body {
     font-family: 'Hepta Slab', serif;
     font-size: 1rem;
@@ -494,6 +488,10 @@ table td {
 
 table th {
     background: var(--light-color);
+}
+
+input:focus::placeholder {
+    color: transparent;
 }
 
 /* Navbar */

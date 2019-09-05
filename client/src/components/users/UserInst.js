@@ -23,13 +23,17 @@ const UserInst = props => {
                 }}
             >
                 <img
-                    src={profile_image_url.replace('_normal', '')}
+                    src={profile_image_url
+                        .replace('_normal', '')
+                        .replace('http', 'https')}
                     alt=""
-                    className="round-img pb-5"
+                    className="round-img "
                     style={{ width: '100px' }}
                 />
                 <div style={{ backgroundColor: 'black', opacity: 0.5 }}>
-                    <h3 style={{ color: 'white' }}>@{screen_name}</h3>
+                    <h4 className="mt-5" style={{ color: 'white' }}>
+                        @{screen_name}
+                    </h4>
                 </div>
             </div>
         </Link>

@@ -17,7 +17,10 @@ const Users = () => {
                 <div className="user-ctn">
                     <div className="row">
                         {users.map(user => (
-                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                            <div
+                                className="col-sm-12 col-md-6 col-lg-4 col-xl-3"
+                                key={user.id}
+                            >
                                 <UserInst key={user.id} user={user} />
                             </div>
                         ))}
@@ -27,7 +30,12 @@ const Users = () => {
         } else if (Array.isArray(users)) {
             return <div></div>;
         } else {
-            return <div> API error :(</div>;
+            return (
+                <div className="text-center pt-4">
+                    <h1 className="display-3">No results.</h1>
+                    <h1 className="display-5">(Try again)</h1>
+                </div>
+            );
         }
     }
 };
